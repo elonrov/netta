@@ -43,16 +43,16 @@ export default class Cupid {
                 this.dirX = 0;
                 break;
             case "left":
-                this.dirX = -4;
+                this.dirX = -5;
                 break;
             case "right":
-                this.dirX = 4;
+                this.dirX = 5;
                 break;
             case "up":
-                this.dirY = -8;
+                this.dirY = -10;
                 break
             case "gravity":
-                this.dirY = 3;
+                this.dirY = 4;
                 break;
         }
     };
