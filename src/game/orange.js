@@ -7,12 +7,12 @@ export default class Orange {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight; 
     
-    this.orangeWidth = 35;
-    this.orangeHeight = 30;
-    this.sound = new Sound("src/sounds/orange.mp3");
+    this.orangeWidth = 55;
+    this.orangeHeight = 50;
+    this.sound = new Sound("src/sounds/kiss.mp3");
 
     this.orangeX = Math.floor(Math.random() * Math.floor(720)); 
-    this.orangeY = -15;
+    this.orangeY = -12;
     this.now = 0;
 
     this.drawOrange = this.drawOrange.bind(this);
@@ -20,7 +20,7 @@ export default class Orange {
 
   drawOrange(ctx) {
     const img = new Image();  
-    img.src = "src/images/orange.png";
+    img.src = "src/images/laney.png";
     ctx.drawImage(img, this.orangeX, this.orangeY, this.orangeWidth, this.orangeHeight)
     this.fall();
   }

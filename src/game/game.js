@@ -1,5 +1,6 @@
 import Cupid from './cupid';
 import Orange from './orange';
+import Anna from './anna';
 import Cloud from './cloud';
 
 export default class Game {
@@ -13,13 +14,19 @@ export default class Game {
         this.soundOn = true;
         this.highScore = 0;
 
-        this.oranges = [];
-        let orange = new Orange;
-        this.oranges.push(orange);
+        this.oranges = [new Orange];
+        // let laney = new Orange;
+        // this.oranges.push(laney);
+
+        this.annas = [new Anna];
+        // let anna = new Anna; 
+        // this.annas.push(anna);
+
         this.clouds = [new Cloud, new Cloud];
         
         this.frameO = 0;
-        this.frameC = 0;        
+        this.frameA = 0;      
+        this.frameC = 0;  
         this.frameId = null;
 
         this.gameOver = this.gameOver.bind(this);
@@ -108,6 +115,28 @@ export default class Game {
         };
     }
 
+    detectAnnaCollision(anna) {
+        const annaCenterX = ((anna.annaX + (anna.annaX + anna.annaWidth)) / 2);
+        const annaCenterY = ((anna.annaY + (anna.annaY + anna.annaHeight)) / 2);
+        const cupidTop = ((this.cupid.cupidY));
+        const cupidBottom = ((this.cupid.cupidY + this.cupid.cupidHeight));
+        const cupidLeft = ((this.cupid.cupidX));
+        const cupidRight = ((this.cupid.cupidX + this.cupid.cupidWidth));
+        if (((annaCenterX > cupidLeft) && (annaCenterX < cupidRight)) &&
+            ((annaCenterY > cupidTop) && (annaCenterY < cupidBottom))) {
+            if (this.soundOn) {
+                anna.sound.play();
+            }
+            this.annas.shift();
+            this.cupid.score += 1;
+            this.updateScore();
+            return true;
+        } else if (annaCenterY > this.canvasHeight) {
+            this.annas.shift();
+        };
+    }
+
+
     detectCloudCollision(cloud) {
         const cloudCenterX = ((cloud.cloudX + (cloud.cloudX + cloud.cloudWidth)) / 2);
         const cloudCenterY = ((cloud.cloudY + (cloud.cloudY + cloud.cloudHeight)) / 2);
@@ -135,28 +164,43 @@ export default class Game {
             this.cupid.drawCupid(this.ctx);
             
             this.frameO += 1;
+            this.frameA += 1;
             this.frameC += 1;
 
-            this.oranges.forEach(orange => {
-                orange.drawOrange(this.ctx);
-            });
-
-            this.clouds.forEach(cloud => {
-                cloud.drawCloud(this.ctx);
-            })
-
-            if (this.frameO > 100) {
+            
+            if (this.frameO > 160) {
                 this.oranges.push(new Orange);
                 this.frameO = 0;
             }; 
-
+            
+            if (this.frameA > 200) {
+                this.annas.push(new Anna); 
+                this.frameA = 0;
+            }
+            
             if(this.frameC > 175) {
                 this.clouds.push(new Cloud);
                 this.frameC = 0;
             }; 
 
             this.oranges.forEach(orange => {
+                orange.drawOrange(this.ctx);
+            });
+
+            this.annas.forEach(anna => {
+                anna.drawAnna(this.ctx);
+            })
+
+            this.clouds.forEach(cloud => {
+                cloud.drawCloud(this.ctx);
+            })
+
+            this.oranges.forEach(orange => {
                 this.detectOrangeCollision(orange);
+            });
+
+            this.annas.forEach(anna => {
+                this.detectAnnaCollision(anna);
             });
 
             this.clouds.forEach(cloud => {
@@ -176,20 +220,8 @@ export default class Game {
     }
 
     drawHealthBar() {
-        //gradient not working
-        // let gradient = this.ctxFrame.createLinearGradient(0, 0, 170, 0); 
-        // gradient.addColorStop((this.cupid.health / 270), 'green'); 
-        // gradient.addColorStop(1, 'red'); 
-        // this.ctxFrame.fillStyle = gradient; 
-
-        // this.ctxFrame.fillRect(345, 10, 270, 25); 
-        // this.ctxFrame.fill();
-
-        //regular fill working
         this.ctxFrame.beginPath(); 
         this.ctxFrame.rect(345, 10, 270, 25); 
-        // this.ctxFrame.strokeStyle = "#000000";
-        // this.ctxFrame.strokeRect(345, 10, 270, 25);
         this.ctxFrame.lineWidth = 2.25;
         this.ctxFrame.fillStyle = "#e84625";
         this.ctxFrame.fill();

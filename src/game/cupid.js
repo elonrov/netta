@@ -8,10 +8,10 @@ export default class Cupid {
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
 
-        this.cupidWidth = 150;
-        this.cupidHeight = 95;
+        this.cupidWidth = 112;
+        this.cupidHeight = 150;
 
-        this.cupidX = 300;
+        this.cupidX = 330;
         this.cupidY = 20;
         this.dirX = 0;
         this.dirY = 0;
@@ -19,7 +19,7 @@ export default class Cupid {
         this.health = 270;
         this.score = 0;
 
-        this.imgSrc = "src/images/cupid-left.png";
+        this.imgSrc = "src/images/netta.png";
 
         this.drawCupid = this.drawCupid.bind(this);
         this.moveCupid = this.moveCupid.bind(this);
@@ -43,18 +43,16 @@ export default class Cupid {
                 this.dirX = 0;
                 break;
             case "left":
-                this.dirX = -5;
-                this.imgSrc = "src/images/cupid-left.png"
+                this.dirX = -4;
                 break;
             case "right":
-                this.dirX = 5;
-                this.imgSrc = "src/images/cupid-right.png"
+                this.dirX = 4;
                 break;
             case "up":
-                this.dirY = -10;
+                this.dirY = -8;
                 break
             case "gravity":
-                this.dirY = 4;
+                this.dirY = 3;
                 break;
         }
     };

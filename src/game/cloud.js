@@ -7,9 +7,9 @@ export default class Cloud {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
 
-    this.cloudWidth = 200;
-    this.cloudHeight = 100;
-    this.sound = new Sound("src/sounds/thunder.mp3");
+    this.cloudWidth = 100;
+    this.cloudHeight = 50;
+    this.sound = new Sound("src/sounds/shroom.mp3");
     
     this.cloudX = "";
     this.dir = Math.random() < 0.5 ? "left" : "right";
@@ -25,7 +25,7 @@ export default class Cloud {
 
   drawCloud(ctx) {
     const img = new Image();
-    img.src = "src/images/cloud.png";
+    img.src = "src/images/mushrooms.png";
     ctx.drawImage(img, this.cloudX, this.cloudY, this.cloudWidth, this.cloudHeight)
     this.move(this.dir);
   }
