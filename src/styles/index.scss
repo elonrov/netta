@@ -16,7 +16,8 @@ body {
 }
 
 #canvas-background {
-    width: 940px;
+    //width: 940px;
+    width: 799px;
     height: auto;
     align-self: center;
     background-image: url("../images/background.png");
@@ -45,7 +46,7 @@ body {
 
 .welcome h1 {
   font-family: 'Righteous';
-  font-size: 100px; 
+  font-size: 85px; 
   margin-bottom: 0;
   line-height: 1;
 }
@@ -67,7 +68,7 @@ body {
 #canvas-frame {
     position: absolute;
     align-self: center; 
-    bottom: -55px;
+    bottom: -52px;
     z-index: 20;
 }
 
@@ -75,21 +76,21 @@ body {
   display: flex; 
   flex-direction: row; 
   font-family: 'Righteous', cursive;
-  font-size: 35px; 
+  font-size: 30px; 
   color: white;
   width: 100%; 
   position: absolute; 
   margin: 0 auto;
-  bottom: -50px;
+  bottom: -45px;
   stroke: 1px black;
 }
 
 #score {
-  padding-left: 100px;
+  padding-left: 137px;
 }
 
 #health {
-  padding-left: 50px;
+  padding-left: 40px;
 }
 
 #high-score {
@@ -102,8 +103,8 @@ body {
     position: absolute;
     margin: 0 auto;
     align-self: center;
-    width: 1035px; 
-    height: 742px;
+    width: 880px; 
+    height: 631px;
 }
 
 .fade {
@@ -113,7 +114,7 @@ body {
 .main {
     display: grid; 
     grid-template-columns: 1fr 1055px 1fr;
-    padding-top: 40px;
+    padding-top: 80px;
 }
 
 .game {

@@ -7,11 +7,11 @@ export default class Anna {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
 
-    this.annaWidth = 55;
-    this.annaHeight = 67;
+    this.annaWidth = 47;
+    this.annaHeight = 57;
     this.sound = new Sound("src/sounds/kiss.mp3");
 
-    this.annaX = Math.floor(Math.random() * Math.floor(720));
+    this.annaX = Math.floor(Math.random() * Math.floor(640));
     this.annaY = -12;
     this.now = 0;
 
