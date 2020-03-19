@@ -228,7 +228,7 @@ export default class Game {
 
         this.ctxFrame.beginPath(); 
         this.ctxFrame.rect(345, 10, this.cupid.health, 25); 
-        this.ctxFrame.fillStyle = "#2c9926"; 
+        this.ctxFrame.fillStyle = "#38c230"; 
         this.ctxFrame.fill();
     }
     
